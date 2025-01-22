@@ -6,7 +6,7 @@ const path = require('path');
 const mainRouter = require('./routes/mainRouter');
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000; // Fallback for local development
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
