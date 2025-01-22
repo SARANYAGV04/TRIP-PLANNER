@@ -6,9 +6,15 @@ const travel = require('../models/travel');
 
 // to view all travels
 router.get('/', async (req, res) => {
-    const travels = await travel.find();
-    res.render('index', { travels });
+    try {
+        const travels = await travel.find();
+        res.render('index', { travels });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
 });
+
 
 // to get added travel
 router.get('/add', (req, res) => {
